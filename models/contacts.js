@@ -3,6 +3,7 @@ const path = require("node:path");
 const { nanoid } = require("nanoid");
 
 const contactsPath = path.join(__dirname, "./contacts.json");
+
 const listContacts = async () => {
   const answer = await fs.readFile(contactsPath);
   const contacts = JSON.parse(answer);
@@ -19,7 +20,6 @@ const getContactById = async (contactId) => {
 
 const removeContact = async (contactId) => {
   const contacts = await listContacts();
-
   const contactWithId = await getContactById(contactId);
   if (contactWithId) {
     const contactsNew = contacts.filter((contact) => contact.id !== contactId);
