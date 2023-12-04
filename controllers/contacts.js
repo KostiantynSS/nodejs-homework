@@ -1,3 +1,4 @@
+const { HttpError } = require("../helpers/HttpError");
 const {
   listContacts,
   getContactById,
@@ -5,7 +6,7 @@ const {
   removeContact,
   updateContact,
 } = require("../models/contacts");
-const { HttpError } = require("../../helpers/HttpError");
+
 const Joi = require("joi");
 
 const addSchema = Joi.object({
