@@ -3,7 +3,7 @@ const { Contact, addSchema } = require("../../Schemas/contact");
 
 const addOne = async (req, res, next) => {
   const { error } = addSchema.validate(req.body);
-  console.log(error);
+
   if (error) {
     throw HttpError(400, "missing required name field");
   }
