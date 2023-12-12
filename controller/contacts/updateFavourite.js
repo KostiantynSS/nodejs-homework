@@ -6,11 +6,11 @@ const updateFavourite = async (req, res, next) => {
   if (error) {
     throw HttpError(400, "missing field favourite");
   }
-  const updatedContacts = await Contact.findByIdAndUpdate(
+  const updatedContact = await Contact.findByIdAndUpdate(
     req.params.contactId,
     req.body,
     { new: true }
   );
-  res.json(updatedContacts);
+  res.json(updatedContact);
 };
 module.exports = updateFavourite;
