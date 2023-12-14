@@ -8,9 +8,11 @@ const addSchema = Joi.object({
   phone: Joi.string().required(),
   favourite: Joi.boolean(),
 });
+
 const updateFavouriteSchema = Joi.object({
   favourite: Joi.boolean().required(),
 });
+
 const contactSchema = new Schema(
   {
     name: {
