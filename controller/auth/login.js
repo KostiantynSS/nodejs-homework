@@ -1,20 +1,15 @@
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const {
   User,
   schemas: { loginSchema },
 } = require("../../Schemas/user");
 const { HttpError } = require("../../helpers");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
 const { SECRET_KEY } = process.env;
 
-// try {
-//   const { id } = jwt.verify(token, SECRET_KEY);
-// } catch (error) {
-//   console.log(error.message);
-// }
 const login = async (req, res, next) => {
   const { error } = await loginSchema.validate(req.body);
+
   if (error) {
     throw HttpError(400, error.message);
   }
@@ -31,7 +26,7 @@ const login = async (req, res, next) => {
   }
   const payload = { id: user._id };
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "1h" });
-
+  await User.findByIdAndUpdate(user._id, { token });
   res.status(200).json({
     token,
     user: {
@@ -40,4 +35,5 @@ const login = async (req, res, next) => {
     },
   });
 };
+
 module.exports = login;

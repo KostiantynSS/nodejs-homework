@@ -5,7 +5,7 @@ const { handleMongooseError } = require("../helpers");
 const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
-  phone: Joi.number().required(),
+  phone: Joi.string().required(),
   favourite: Joi.boolean(),
 });
 const updateFavouriteSchema = Joi.object({

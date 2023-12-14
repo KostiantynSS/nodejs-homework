@@ -1,9 +1,9 @@
+const bcrypt = require("bcrypt");
 const {
   User,
   schemas: { registerSchema },
 } = require("../../Schemas/user");
 const { HttpError } = require("../../helpers");
-const bcrypt = require("bcrypt");
 
 const register = async (req, res, next) => {
   const { error } = await registerSchema.validate(req.body);
