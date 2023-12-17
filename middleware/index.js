@@ -1,4 +1,4 @@
 const isValidId = require("./isValidId");
 const requestValidation = require("./requestValidation");
-
-module.exports = { isValidId, requestValidation };
+const authenticate = require("./authenticate");
+module.exports = { isValidId, requestValidation, authenticate };

@@ -5,12 +5,14 @@ const { handleMongooseError } = require("../helpers");
 const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
-  phone: Joi.number().required(),
+  phone: Joi.string().required(),
   favourite: Joi.boolean(),
 });
+
 const updateFavouriteSchema = Joi.object({
   favourite: Joi.boolean().required(),
 });
+
 const contactSchema = new Schema(
   {
     name: {
@@ -26,6 +28,10 @@ const contactSchema = new Schema(
     favourite: {
       type: Boolean,
       default: false,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
     },
   },
   { versionKey: false }
