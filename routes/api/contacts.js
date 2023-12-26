@@ -15,7 +15,12 @@ router.get(
   isValidId,
   requestValidation(ctrl.getById)
 );
-router.post("/", authenticate, requestValidation(ctrl.addOne));
+router.post(
+  "/",
+  authenticate,
+
+  requestValidation(ctrl.addOne)
+);
 router.delete(
   "/:contactId",
   authenticate,
