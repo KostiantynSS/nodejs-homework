@@ -3,6 +3,7 @@ const login = require("./login");
 const logout = require("./logout");
 const refresh = require("./refresh");
 const register = require("./register");
+const resendVerifyToken = require("./resendVerifyToken");
 const updateAvatar = require("./updateAvatar");
 const verifyEmail = require("./verifyEmail");
 
@@ -14,4 +15,5 @@ module.exports = {
   current,
   updateAvatar,
   verifyEmail,
+  resendVerifyToken,
 };

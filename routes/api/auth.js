@@ -14,6 +14,7 @@ router.patch(
   upload.single("avatarURL"),
   requestValidation(ctrl.updateAvatar)
 );
+router.post("/verify/", requestValidation(ctrl.resendVerifyToken));
 router.get("/verify/:verificationToken", requestValidation(ctrl.verifyEmail));
 // router.post("/refresh", authenticate, requestValidation(ctrl.refresh));
 
