@@ -6,12 +6,15 @@ const { HttpError, sendEmail } = require("../../helpers");
 const { BASE_URL } = process.env;
 
 const resendVerifyToken = async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    throw HttpError(400, "missing required field email");
+  }
   const { error } = await emailSchema.validate(req.body);
   if (error) {
     throw HttpError(400, error.message);
   }
 
-  const { email } = req.body;
   const user = await User.findOne({ email });
 
   if (!user) {
@@ -19,7 +22,7 @@ const resendVerifyToken = async (req, res) => {
   }
 
   if (user.verify) {
-    throw HttpError(401, "User is already verified");
+    throw HttpError(400, "Verification has already been passed");
   }
 
   const verifyEmail = {
